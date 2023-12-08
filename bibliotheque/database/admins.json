@@ -1,0 +1,9 @@
+[
+    {
+        "id": 0,
+        "nom": "admin",
+        "prenom": "admin",
+        "login": "admin",
+        "mdp": "admin"
+    }
+]

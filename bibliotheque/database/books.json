@@ -1,0 +1,182 @@
+[{
+	"id": 1,
+	"titre": "Le Petit Prince",
+	"auteur": "Antoine de Saint-Exupéry",
+	"editeur": "Gallimard",
+	"isbn": "9782070408504",
+	"nbr_ex": 3,
+	"annee": "1943",
+	"emprunter_par": []
+}, {
+	"id": 2,
+	"titre": "1984",
+	"auteur": "George Orwell",
+	"editeur": "Signet Classic",
+	"isbn": "9780451524935",
+	"nbr_ex": 7,
+	"annee": "1949",
+	"emprunter_par": []
+}, {
+	"id": 3,
+	"titre": "L'Étranger",
+	"auteur": "Albert Camus",
+	"editeur": "Gallimard",
+	"isbn": "9782070212396",
+	"nbr_ex": 1,
+	"annee": "1942",
+	"emprunter_par": []
+}, {
+	"id": 4,
+	"titre": "Moby Dick",
+	"auteur": "Herman Melville",
+	"editeur": "Penguin Classics",
+	"isbn": "9780142437247",
+	"nbr_ex": 1,
+	"annee": "1851",
+	"emprunter_par": []
+}, {
+	"id": 5,
+	"titre": "L'Alchimiste",
+	"auteur": "Paulo Coelho",
+	"editeur": "HaperOne",
+	"isbn": "9780062315007",
+	"nbr_ex": 6,
+	"annee": "1988",
+	"emprunter_par": []
+}, {
+	"id": 6,
+	"titre": "Crime et Châtiment",
+	"auteur": "Fyodor Dostoevsky",
+	"editeur": "Penguin Classics",
+	"isbn": "9780140449136",
+	"nbr_ex": 4,
+	"annee": "1866",
+	"emprunter_par": []
+}, {
+	"id": 7,
+	"titre": "Les Misérables",
+	"auteur": "Victor Hugo",
+	"editeur": "Penguin Classics",
+	"isbn": "9780140444308",
+	"nbr_ex": 5,
+	"annee": "1862",
+	"emprunter_par": []
+}, {
+	"id": 8,
+	"titre": "Guerre et Paix",
+	"auteur": "Léon Tolstoï",
+	"editeur": "Penguin Classics",
+	"isbn": "9780140447934",
+	"nbr_ex": 3,
+	"annee": "1869",
+	"emprunter_par": []
+}, {
+	"id": 9,
+	"titre": "Ulysse",
+	"auteur": "James Joyce",
+	"editeur": "Penguin Modern Classics",
+	"isbn": "9780141182803",
+	"nbr_ex": 2,
+	"annee": "1922",
+	"emprunter_par": []
+}, {
+	"id": 10,
+	"titre": "Madame Bovary",
+	"auteur": "Gustave Flaubert",
+	"editeur": "Penguin Classics",
+	"isbn": "9780140449129",
+	"nbr_ex": 4,
+	"annee": "1856",
+	"emprunter_par": []
+}, {
+	"id": 14,
+	"titre": "du cote de chez bahae",
+	"auteur": "Marcel Proust",
+	"editeur": "Gallimard",
+	"isbn": "9782070381685",
+	"nbr_ex": 3,
+	"annee": "1913",
+	"emprunter_par": []
+}, {
+	"id": 12,
+	"titre": "L'Iliade",
+	"auteur": "Homère",
+	"editeur": "Folio Classique",
+	"isbn": "9782070384303",
+	"nbr_ex": 5,
+	"annee": "800 av. J.-C.",
+	"emprunter_par": []
+}, {
+	"id": 13,
+	"titre": "L'Odyssée",
+	"auteur": "Homère",
+	"editeur": "Folio Classique",
+	"isbn": "9782070384297",
+	"nbr_ex": 4,
+	"annee": "800 av. J.-C.",
+	"emprunter_par": []
+}, {
+	"id": 14,
+	"titre": "Du côté de chez Swann",
+	"auteur": "Marcel Proust",
+	"editeur": "Gallimard",
+	"isbn": "9782070381685",
+	"nbr_ex": 3,
+	"annee": "1913",
+	"emprunter_par": []
+}, {
+	"id": 15,
+	"titre": "Au bonheur des dames",
+	"auteur": "Émile Zola",
+	"editeur": "Folio Classique",
+	"isbn": "9782070404438",
+	"nbr_ex": 5,
+	"annee": "1883",
+	"emprunter_par": []
+}, {
+	"id": 16,
+	"titre": "Bel-Ami",
+	"auteur": "Guy de Maupassant",
+	"editeur": "Folio Classique",
+	"isbn": "9782070405374",
+	"nbr_ex": 4,
+	"annee": "1885",
+	"emprunter_par": []
+}, {
+	"id": 17,
+	"titre": "Thérèse Raquin",
+	"auteur": "Émile Zola",
+	"editeur": "Folio Classique",
+	"isbn": "9782070404582",
+	"nbr_ex": 3,
+	"annee": "1867",
+	"emprunter_par": []
+}, {
+	"id": 18,
+	"titre": "Voyage au bout de la nuit",
+	"auteur": "Louis-Ferdinand Céline",
+	"editeur": "Folio Classique",
+	"isbn": "9782070404483",
+	"nbr_ex": 2,
+	"annee": "1932",
+	"emprunter_par": []
+}, {
+	"id": 19,
+	"titre": "Nadja",
+	"auteur": "André Breton",
+	"editeur": "Gallimard",
+	"isbn": "9782070367238",
+	"nbr_ex": 4,
+	"annee": "1928",
+	"emprunter_par": []
+}, {
+	"id": 20,
+	"titre": "L'écume des jours",
+	"auteur": "Boris Vian",
+	"editeur": "Folio Classique",
+	"isbn": "9782070360024",
+	"nbr_ex": 5,
+	"annee": "1947",
+	"emprunter_par": []
+},
+]
