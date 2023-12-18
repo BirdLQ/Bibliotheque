@@ -9,8 +9,6 @@ from admin import Admin
 from etudiant import Etudiant
 from utilisateur import Authentification
 
-from rich.traceback import install
-install()
 
 def main() -> None:
     utils.clear()
