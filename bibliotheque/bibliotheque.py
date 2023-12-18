@@ -4,25 +4,12 @@ La classe Bibliotheque comprend des méthodes pour l'enregistrement des utilisat
 la connexion des utilisateurs, l'affichage des livres, etc.
 """
 
-from dataclasses import dataclass, field
 from files import BookHandler
 from utils import print
 import utils
 import datetime
 
-
-@dataclass
-class Livre:
-    id: int = int()
-    titre: str = str()
-    auteur: str = str()
-    editeur: str = str()
-    isbn: str = str()
-    nbr_ex: int = str()
-    annee: str = str()
-    emprunter_par: list = field(default_factory=list)
-
-class Bibliotheque(Livre):
+class Bibliotheque:
     book_handler = BookHandler()
     livres = book_handler.load_data()
 
@@ -153,11 +140,15 @@ class Bibliotheque(Livre):
                 print("Attribut non valide veuilez recommencer.")
             else:
                 break
-            
-        livre[0][attr_a_modifier] = utils.input(f"Entrez la nouvelle valeur de {attr_a_modifier} : ")
         
-        print(livre)
-        self.update_book(livre[0]) # db gets erased à corriger
+        if attr_a_modifier in ["id", "nbr_ex"]:
+            nouvelle_val = utils.int_input(f"Entrez la nouvelle valeur de {attr_a_modifier} : ")
+        else:
+            nouvelle_val = utils.input(f"Entrez la nouvelle valeur de {attr_a_modifier} : ")
+        
+        livre[0][attr_a_modifier] = nouvelle_val
+        
+        self.update_book(livre[0])
         
         utils.message([("Attribut modfifier avec succés", "success")])
         
