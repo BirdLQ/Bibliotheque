@@ -105,7 +105,7 @@ class Authentification(Utilisateur):
                     return None
 
                 utils.message([("Connexion réussie en tant qu'etudiant.", "success")])
-                return Etudiant(user, False)
+                return Etudiant(user)
 
         utils.message([("Identifiant ou mot de passe incorrect!", "error")])
         return None
