@@ -111,6 +111,27 @@ def clear(validation: bool = False) -> None:
         print("\033c", end="")
 
 
+def parse_data(obj):
+    if isinstance(obj, dict):
+        if not obj:
+            return "-"
+        else:
+            return {k: parse_data(v) for k, v in obj.items()}
+    elif isinstance(obj, list):
+        if not obj:
+            return "-"
+        else:
+            return [parse_data(elem) for elem in obj]
+    elif obj is True:
+        return "oui"
+    elif obj is False:
+        return "Non"
+    elif obj is None or obj == "":
+        return "-"
+    else:
+        return obj
+
+
 def json_to_table(data: list[dict], effacer: bool = True) -> bool:
     """
     Fonction pour afficher des données JSON sous forme de tableau.
@@ -119,6 +140,9 @@ def json_to_table(data: list[dict], effacer: bool = True) -> bool:
         data (List[Dict]): Les données à afficher.
         effacer (bool, optional): Si True, efface la console après l'affichage. Par défaut True.
     """
+    data = [parse_data(d) for d in data]
+    
+    # Si data n'est pas vide, obtenir les clés du premier dictionnaire pour les utiliser comme noms de colonnes
     if len(data):
         cols = data[0].keys()
     else:
@@ -129,9 +153,12 @@ def json_to_table(data: list[dict], effacer: bool = True) -> bool:
     table = Table(
         box=box.SQUARE_DOUBLE_HEAD, header_style="bold reverse", show_lines=True
     )
+    # Ajouter une colonne pour chaque clé dans cols
     for col in cols:
         table.add_column(col)
-
+    
+    # Pour chaque dictionnaire dans data, ajouter une ligne au tableau
+    # Chaque ligne contient la représentation en chaîne de la valeur pour chaque clé dans cols
     for row in data:
         table.add_row(*[str(row[col]) for col in cols])
 
