@@ -84,13 +84,14 @@ def handle_admin(admin: Admin) -> None:
                     "2 - Supprimer un livre.",
                     "3 - Modifier un livre",
                     "4 - Voir la liste des livres",
-                    "5 - Retourner en arriere.",
+                    "5 - Voir l'historique des emprunts",
+                    "6 - Retourner en arriere.",
                     sep="\n",
                 )
-                choix = utils.get_input(5)
+                choix = utils.get_input(6)
                 utils.clear()
 
-                if choix == 5:
+                if choix == 6:
                     break
                 else:
                     admin.gerer_livres(choix)
