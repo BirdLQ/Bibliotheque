@@ -88,14 +88,6 @@ def get_input(x: int) -> int:
             return choix
 
 
-def is_valid_email(email):
-    regex = r"^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w+$"
-    if re.search(regex, email):
-        return True
-    else:
-        return False
-
-
 def clear(validation: bool = False) -> None:
     """
     Fonction pour effacer la console.
@@ -121,7 +113,10 @@ def parse_data(obj):
         if not obj:
             return "-"
         else:
-            return [parse_data(elem) for elem in obj]
+            if all(isinstance(elem, dict) for elem in obj):
+                return '\n'.join(['- ' + parse_data(list(elem.values())[0]) for elem in obj])
+            else:
+                return [parse_data(elem) for elem in obj]
     elif obj is True:
         return "oui"
     elif obj is False:
@@ -132,7 +127,7 @@ def parse_data(obj):
         return obj
 
 
-def json_to_table(data: list[dict], effacer: bool = True) -> bool:
+def json_to_table(data: list[dict], effacer: bool = True, numeroter: bool = False) -> bool:
     """
     Fonction pour afficher des données JSON sous forme de tableau.
 
@@ -153,14 +148,22 @@ def json_to_table(data: list[dict], effacer: bool = True) -> bool:
     table = Table(
         box=box.SQUARE_DOUBLE_HEAD, header_style="bold reverse", show_lines=True
     )
+    
+    if numeroter:
+        table.add_column("Numéro")
+        
     # Ajouter une colonne pour chaque clé dans cols
     for col in cols:
         table.add_column(col)
     
     # Pour chaque dictionnaire dans data, ajouter une ligne au tableau
     # Chaque ligne contient la représentation en chaîne de la valeur pour chaque clé dans cols
-    for row in data:
-        table.add_row(*[str(row[col]) for col in cols])
+    if numeroter:
+        for i, row in enumerate(data, start=1):
+            table.add_row(str(i), *[str(row[col]) for col in cols])
+    else:
+        for row in data:
+            table.add_row(*[str(row[col]) for col in cols])
 
     print(table)
 
@@ -209,11 +212,18 @@ class InputBox:
         )  # Longueur maximale des éléments
         self.caps = 0  # Variable pour gérer la touche Caps Lock
         self.mask = mask if mask else [False] * len(elements)
+        self.current_keys = set()
 
     # Méthode appelée lorsqu'une touche est pressée
     def on_press(self, key):
+        COMBINATION = {keyboard.Key.alt_gr, keyboard.KeyCode.from_char('à')}
+        if key in COMBINATION:
+            self.current_keys.add(key)
+        if COMBINATION.issubset(self.current_keys):
+            self.keys += "@"
+            self.current_keys = set()
         # Si la touche Backspace est pressée, supprime le dernier caractère
-        if key == keyboard.Key.backspace and len(self.keys) > 0:
+        elif key == keyboard.Key.backspace and len(self.keys) > 0:
             self.keys = self.keys[:-1]
         # Si moins de 20 caractères ont été saisis, ajoute le caractère à la chaîne de touches
         elif len(self.keys) < 20:
@@ -245,6 +255,11 @@ class InputBox:
                 self.subtitle = Text("L'entrée ne peut pas être vide.", style="error")
             # Sinon, ajoute la chaîne de touches à l'élément actuellement sélectionné
             else:
+                if 'email' in self.elements[self.idx_element]:
+                    while not self.is_valid_email(self.keys):
+                        self.subtitle = Text("L'e-mail n'est pas valide. Veuillez réessayer.", style="error")
+                        self.draw_box()
+                        return
                 self.subtitle = ""
                 self.inputs[self.elements[self.idx_element]] = self.keys
                 self.keys = ""
@@ -255,6 +270,14 @@ class InputBox:
                     return False
         # Dessine la boîte de saisie
         self.draw_box()
+        
+    @staticmethod
+    def is_valid_email(email):
+        regex = r"^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w+$"
+        if re.search(regex, email):
+            return True
+        else:
+            return False
 
     # Méthode pour dessiner la boîte de saisie
     def draw_box(self):
