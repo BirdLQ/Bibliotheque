@@ -105,6 +105,8 @@ class Bibliotheque:
         utils.message([(f"Le livre {titre} a été ajouté avec succès.", "success")])
 
     def supprimer_livre(self):
+        self.afficher_livres("Admin")
+        
         isbn = input("Entrez l'ISBN du livre à supprimer : ")
 
         # Parcours de la liste des livres
@@ -171,6 +173,11 @@ class Bibliotheque:
                 break
 
         utils.message([("Livre retourné avec succès.", "success")])
+        
+    def historique_emprunts(self):
+        livres_empruntes = [livre for livre in self.livres if livre['emprunter_par']]
+        
+        utils.json_to_table(livres_empruntes)
 
     def regle_7jours(self, etudiant_s) -> list[dict]:
         """
