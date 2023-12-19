@@ -91,39 +91,36 @@ class Admin:
 
         if not etudiants:
             return
-
-        id_etudiant = utils.int_input(
-            "Entrez l'ID de l'étudiant dont vous voulez traiter la demande : "
-        )
+        
+        print("Entrez l'ID de l'étudiant dont vous voulez traiter la demande : ")
+        id_etudiant = utils.get_input(len(etudiants))
+        
         utils.clear()
 
         for etudiant in etudiants:
             if etudiant["id"] == id_etudiant:
                 # Afficher toutes les demandes de l'étudiant choisi
-                utils.json_to_table(etudiant["demandes"], False)
+                utils.json_to_table(etudiant["demandes"], False, True)
 
                 print("Entrez le numero de la demande que vous voulez traiter : ")
                 id_demande = utils.get_input(len(etudiant["demandes"]))
 
-                while True:
-                    print(
-                        "Que souhaitez-vous faire :",
-                        "1 - Accepter la demande.",
-                        "2 - Refuser la demande.",
-                        "3 - Retourner en arrière.",
-                        sep="\n",
-                    )
-                    choix = utils.get_input(3)
-                    utils.clear()
+                print("\n",
+                    "Que souhaitez-vous faire :",
+                    "1 - Accepter la demande.",
+                    "2 - Refuser la demande.",
+                    "3 - Retourner en arrière.",
+                    sep="\n",
+                )
+                choix = utils.get_input(3)
+                utils.clear()
 
-                    if choix == 1:
-                        self.accepter_demande(etudiant, id_demande)
-                    elif choix == 2:
-                        self.refuser_demande(etudiant, id_demande)
-                    else:
-                        return
-                break
-
+                if choix == 1:
+                    self.accepter_demande(etudiant, id_demande)
+                elif choix == 2:
+                    self.refuser_demande(etudiant, id_demande)
+                return
+                
     def accepter_demande(self, etudiant, num_demande):
         """
         Méthode pour accepter une demande d'emprunt.
@@ -174,6 +171,8 @@ class Admin:
             self.bibliotheque.modifier_livre()
         elif choix == 4:
             self.bibliotheque.afficher_livres("Admin", True)
+        elif choix == 5:
+            self.bibliotheque.historique_emprunts()
 
     def regle_7jours(self) -> None:
         # Appel de la méthode regle_7jours de Bibliotheque
