@@ -12,11 +12,11 @@ Bienvenue dans le Gestionnaire de Bibliothèque en Python ! Cette application co
 et bien d'autres fonctionnalités.
 
 ## Utilisation
-Clonez le dépôt : git clone https://github.com/BirdLQ/Bibliotheque.git
+Clonez le dépôt : ```git clone https://github.com/BirdLQ/Bibliotheque.git```
 
-Accédez au répertoire du projet : cd Bibliotheque
+Accédez au répertoire du projet : ```cd Bibliotheque```
 
-Exécutez l'application : python main.py
+Exécutez l'application : ```python main.py```
 
 ## Exigences
 Python 3.8 ou supérieur
